@@ -1,0 +1,40 @@
+ON A TROIS APPROCHES POUR FAIRE L'HÉRITAGE, 1 ET 2 SONT PLUS UTILISÉES.
+CONVENTION snake_case pour les lignes de la bd, minuscule pour les noms des tables
+
+1- SINGLE TABLE : toutes les classes qui participent dans l'héritage seront dans une seule table.
+personne(id, nom, prenom, role, adresse, grade, matricule, login, password, sexe, etat)
+--------------------------------------------------------------------------------------------------
+
+2- JOINED : on créée autant de tables que de classes mais la clé de la classe mère migre comme clé étrangère au niveau des classes filles.
+personne(id, nom, prenom, role, etat)
+User(id, login, password, #personne_id)
+RP(#personne_id)
+AC(#personne_id)
+Etudiant(adresse, matricule, sexe, #personne_id)
+Professeur(grade, #personne_id)
+--------------------------------------------------------------------------------------------------
+OneToMany -> ManyToOne
+1 -> * ----  OneToMany
+* -> 1 ----  ManyToOne
+MLD clé du faible qui migre au niveau du fort
+annee(id, libelle)
+inscription(#annee_id)
+
+ManyToMany -> ManyToMany - les 
+classe(id, fil, niveau, libelle)
+professeur(grade)
+professeur_classe(#classe_id, #professeur_id)
+--------------------------------------------------------------------------------------------------
+Type de requête applicables sur une table:
+    Retourne des données -> objet - tableau
+        select
+
+    Retourne un entier -> nbre de lignes modifiées
+        insert
+        update
+        delete
+
+--------------------------------------------------------------------------------------------------
+
+3- fait la fusion de 1 et 2.
+

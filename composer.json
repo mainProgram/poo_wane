@@ -1,0 +1,17 @@
+{
+    "name": "poo_wane",
+    "description": "autoload",
+    "authors": [
+        {
+            "name": "Fama"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\Core": "core/",
+            "App\\Model": "models/",
+            "App\\Controller": "controllers/"
+        }
+    },
+    "require": {}
+}

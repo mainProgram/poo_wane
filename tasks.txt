@@ -1,0 +1,7 @@
+update php to 8 gooooooood
+put datas in the database
+fill the other functions
+
+try to understand the code
+prepare ur questions
+    - how to know who added the teacher ? gooooooood
