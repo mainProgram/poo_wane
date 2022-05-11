@@ -10,7 +10,8 @@
         // Attributs d'instances
         protected int $id;
         protected string $etat;
-        protected string $nomComplet;
+        protected string $prenom;
+        protected string $nom;
 
         // Attribut de classes / statique
         protected static int $nbrePersonne;
@@ -43,12 +44,21 @@
             //          setNomComplet("Ady Jallow");
         }
 
-        public function getNomComplet():string {
-            return $this->nomComplet;
+        public function getPrenom():string {
+            return $this->prenom;
         }
 
-        public function setNomComplet(string $nomComplet):self {
-            $this->nomComplet = $nomComplet;
+        public function setPrenom(string $prenom):self {
+            $this->prenom = $prenom;
+            return $this;
+	    }
+
+        public function getNom():string {
+            return $this->nom;
+        }
+
+        public function setNom(string $nom):self {
+            $this->nom = $nom;
             return $this;
 	    }
     }

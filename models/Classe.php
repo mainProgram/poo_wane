@@ -9,8 +9,9 @@
         private string $niveau;
 
         //many to many avec professeur - Approche fonction navigationnelles
-        public function professeurs():array{
-            return [];
+        public function professeurs():array|null{
+            $sql = "SELECT *... ";
+            return parent::findBy($sql, [$this->id]);
         }
 
         //many to one avec RP - plusieurs classes ajoutees par 1 RP

@@ -50,3 +50,43 @@ error_reporting(E_ALL);
 //     }
 // },
 
+// toutes les classes de php se trouvent dans le dossier racine, \ : namespace racine \PDO
+require '../vendor/autoload.php';
+
+use App\Controller\SecurityController;
+use App\Model\Professeur;
+use App\Model\User;
+use App\Model\AC;
+
+// Professeur::findAll();
+// $prof = new Professeur();
+// $prof->setNom("Diop");
+// $prof->setPrenom("Fama");
+// $prof->setGrade("Doctorat");
+// // $prof->insert();
+// $profs = Professeur::findAll();
+// var_dump($profs);
+
+// $ac = new AC();
+// $ac->setNom("Bâ");
+// $ac->setPrenom("Lamine");
+// $ac->setLogin("lamzoba@gmail.com");
+// $ac->setPassword("passer");
+// // $ac->insert();
+// $acs = AC::findAll();
+// var_dump($acs);
+
+// $Users = User::findAll();
+// var_dump($Users);
+
+require_once "../core/functions.php";
+//  dd(User::findUserByLoginAndPassword("soul@gmail.com", "mausi"));
+
+// use App\Core\Request;
+// $req = new Request;
+// $req->getUri();
+// dd($req->isGet());
+// dd($req->isPost());
+// dd($_SERVER["DOCUMENT_ROOT"]);
+
+require_once "../routes/routes.web.php"; 

@@ -29,18 +29,24 @@
         public function getRole()
         {
                 return $this->role;
-        }         
+        }
+
         public function setRole($role):self
         {
                 $this->role = $role;
                 return $this;
         }
-        public static function findUserByLoginAndPassword($login, $password):object{
-            return self::findBy("select * from personne where login = ? and password = ?", [$login, $password], true);
+
+        public static function findUserByLoginAndPassword($login, $password):object|null{
+            return parent::findBy("select nom, prenom, login from personne where login = ? and password = ?", [$login, $password], true);
         }
+
         public static function findAll():array{
-            $sql = "SELECT * FROM ".parent::table()." WHERE role NOT LIKE 'ROLE_PROFESSEUR'";
-            echo $sql;
-            return [];        
+            $db = parent::database();
+            $db->connectionBD();
+                $sql = "SELECT * FROM ".parent::table()." WHERE role NOT LIKE 'ROLE_PROFESSEUR'";
+                $results = $db->executeSelect($sql);
+            $db->closeConnection();
+            return $results;          
         }
     }

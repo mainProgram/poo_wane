@@ -1,0 +1,12 @@
+<table>
+    <tr>
+        <th>rftzguihjoäö</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>

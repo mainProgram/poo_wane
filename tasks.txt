@@ -5,3 +5,9 @@ fill the other functions
 try to understand the code
 prepare ur questions
     - how to know who added the teacher ? gooooooood
+ if(class_exists($ctrlClass) && method_exists($ctrlClass, $action)){ // verifions si le controller et l'action existent
+                    $ctrl = new $ctrlClass; // ex  : new SecurityController()
+                    $ctrl->$action(); // ex: $ctrl->authentification();
+                }
+                instead of
+            call_user_func(array($ctrl, $action));

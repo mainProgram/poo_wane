@@ -4,7 +4,7 @@
     interface IModel{
         //Methodes abstraites
         //Methodes d'instance
-        public function insert(array $data):int;
+        public function insert():int;
         public function update():int;
         //Methodes statiques
         public static function findAll():array;

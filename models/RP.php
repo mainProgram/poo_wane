@@ -19,8 +19,7 @@
         }
 
         public static function findAll():array{
-            $sql = "SELECT * FROM ".parent::table()." WHERE role LIKE 'ROLE_RP'";
-            echo $sql;
+            $sql = "SELECT * FROM ".parent::table()." WHERE role LIKE '".parent::role("ROLE_RP")."'";
             return [];        
         }
     }
