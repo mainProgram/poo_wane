@@ -17,9 +17,4 @@
         public function demandes():array{
             return [];
         }
-
-        public static function findAll():array{
-            $sql = "SELECT * FROM ".parent::table()." WHERE role LIKE '".parent::role("ROLE_RP")."'";
-            return [];        
-        }
     }

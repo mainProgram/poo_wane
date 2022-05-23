@@ -14,23 +14,18 @@
         protected string $nom;
 
         // Attribut de classes / statique
-        protected static int $nbrePersonne;
+        protected static int $_nbrePersonne;
         protected static string $role;
 
         // Methode statique
         public static function getNbrePersonne()
         {
-            return self::$nbrePersonne; //:: opérateur de portée de classe
+            return self::$_nbrePersonne; //:: opérateur de portée de classe
         }
         public static function setNbrePersonne($nbrePersonne)
         {
-           self::$nbrePersonne = $nbrePersonne; //:: opérateur de portée de classe
+           self::$_nbrePersonne = $nbrePersonne; //:: opérateur de portée de classe
         }
-
-        //contructeur par defaut
-        // public function __construct() {
-        //     self::$table = "personne";
-        // }
 
         // Getters et setters
         public function getId():int {
@@ -61,4 +56,31 @@
             $this->nom = $nom;
             return $this;
 	    }
+
+        public static function findAll(string $orderBy = ""):array{
+            $orderBy = !empty($orderBy) ? (" ORDER BY ".$orderBy) : "";
+            $db = self::database();
+            $db->connectionBD();
+            //requete non préparée, var injectée lors de l'écriture de la requête
+                $table = self::getClass();
+                if($table == "User")
+                    $sql = "SELECT * FROM ".self::table()." WHERE role NOT LIKE 'ROLE_PROFESSEUR'".$orderBy;
+                else
+                    $sql = "SELECT * FROM ".self::table()." WHERE role LIKE '".self::giveMeTheRole()."'".$orderBy;
+            $result = $db->executeSelect($sql);
+            $db->closeConnection();
+            return $result;        
+        }
+
+        public function insert():int{
+            // echo parent::giveMeTheRole();
+            // dd(array_reverse(parent::get_class_attributes()));
+            // $db = parent::database();
+            // $db->connectionBD();
+            //     $sql = "INSERT INTO personne (`prenom`, `nom`, `role`, `grade`) VALUES (?, ?, ?, ?)";
+            //     $result = $db->executeUpdate($sql, [$this->prenom, $this->nom,  parent::$role,  $this->grade]);
+            // $db->closeConnection();
+            // return $result;     
+            return 0;     
+        }
     }

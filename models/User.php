@@ -39,14 +39,6 @@
 
         public static function findUserByLoginAndPassword($login, $password):object|null{
             return parent::findBy("select nom, prenom, login from personne where login = ? and password = ?", [$login, $password], true);
-        }
-
-        public static function findAll():array{
-            $db = parent::database();
-            $db->connectionBD();
-                $sql = "SELECT * FROM ".parent::table()." WHERE role NOT LIKE 'ROLE_PROFESSEUR'";
-                $results = $db->executeSelect($sql);
-            $db->closeConnection();
-            return $results;          
-        }
+        }      
+        
     }

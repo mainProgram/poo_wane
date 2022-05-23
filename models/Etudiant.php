@@ -43,9 +43,5 @@
             $this->sexe = $sexe;
             return $this;
         }
-        public static function findAll():array{
-            $sql = "SELECT * FROM ".parent::table()." WHERE role LIKE '".parent::role("ROLE_ETUDIANT")."'";
-            echo $sql ;
-            return [];        
-        }
+       
     }

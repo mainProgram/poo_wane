@@ -54,15 +54,25 @@ error_reporting(E_ALL);
 require '../vendor/autoload.php';
 
 use App\Controller\SecurityController;
+use App\Core\Model;
+use App\Model\Inscription;
 use App\Model\Professeur;
+use App\Model\Personne;
+use App\Model\Etudiant;
+use App\Model\Demande;
+use App\Model\Classe;
+use App\Model\Module;
+use App\Model\Annee;
 use App\Model\User;
 use App\Model\AC;
+use App\Model\RP;
 
 // Professeur::findAll();
 // $prof = new Professeur();
 // $prof->setNom("Diop");
 // $prof->setPrenom("Fama");
 // $prof->setGrade("Doctorat");
+// dd($prof);
 // // $prof->insert();
 // $profs = Professeur::findAll();
 // var_dump($profs);
@@ -90,3 +100,8 @@ require_once "../core/functions.php";
 // dd($_SERVER["DOCUMENT_ROOT"]);
 
 require_once "../routes/routes.web.php"; 
+//  $prof = new Professeur();
+// $prof->setNom("Diop");
+// $prof->setPrenom("Fama");
+// $prof->setGrade("Doctorat");
+// dd(get_object_vars($prof));

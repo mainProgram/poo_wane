@@ -1,7 +1,9 @@
 <?php
     namespace App\Model;
 
-    class Demande{
+use App\Core\Model;
+
+    class Demande extends Model{
         private int $id;
         private string $motif;
         private \DateTime $date; //le slash avant cest que quand on est dans php et quon mette \ ca veut dire quon attaque toutes les classes predefinies de php

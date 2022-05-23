@@ -6,9 +6,9 @@
         
         public function connectionBD():void{
             $this->pdo = 
-            new \PDO("mysql:dbname=poo_inscription;host=localhost", //dbpath
+            new \PDO("mysql:dbname=poo_inscription;host=127.0.0.1", //dbpath
                     "poo_inscription",    // name
-                    "poo_inscription",    //password
+                    "poo_inscription" ,  //password
                     array(
                         \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4 COLLATE utf8mb4_general_ci",
                         \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION

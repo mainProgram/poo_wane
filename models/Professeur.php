@@ -30,20 +30,11 @@
             return $this;
         }
 
-        public static function findAll():array{
-            $db = parent::database();
-            $db->connectionBD();
-                $sql = "SELECT id, prenom, nom, grade FROM ".parent::table()." WHERE role LIKE '".parent::role("ROLE_PROFESSEUR")."'";
-                $results = $db->executeSelect($sql);
-            $db->closeConnection();
-            return $results;     
-        }
-
         public function insert():int{
             $db = parent::database();
             $db->connectionBD();
-                $sql = "INSERT INTO personne (`prenom`, `nom`, `role`, `grade`) VALUES (?, ?, ?, ?)";
-                $result = $db->executeUpdate($sql, [$this->prenom, $this->nom,  parent::$role,  $this->grade]);
+                $sql = "INSERT INTO `personne` (`prenom`, `nom`, `grade`, `role`) VALUES (?, ?, ?, ?)";
+                $result = $db->executeUpdate($sql, [$this->prenom, $this->nom, $this->grade, parent::giveMeTheRole()]);
             $db->closeConnection();
             return $result;     
         }

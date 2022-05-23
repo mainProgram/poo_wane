@@ -1,7 +1,9 @@
 <?php
     namespace App\Model;
 
-    class Module{
+use App\Core\Model;
+
+    class Module extends Model{
         private int $id;
         private string $nom;
         private string $etat;

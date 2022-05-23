@@ -5,6 +5,8 @@
     class PersonneController extends Controller{
 
         public function listerPersonne(){
-            $this->render("personne/liste.html.php");
+            $this->render("personne/liste");
         }
+
+        
     } 
