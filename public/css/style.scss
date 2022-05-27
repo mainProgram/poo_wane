@@ -9,8 +9,12 @@
     margin: 0;
 }
 
-label {
-     @include font-size(4rem);
+body{
+  overflow: hidden;
+}
+
+// label {
+//     @include font-size(4rem);
   
     // The font-size mixin is a shorthand which calls
     // @include rfs(4rem, font-size);
@@ -35,4 +39,4 @@ label {
   
     // Custom properties (css variables):
     // @include rfs(4rem, --border-radius);
-  }
+  // }

@@ -62,6 +62,15 @@
             $this->niveau = $niveau;
             return $this;
         }
+
+        public function insert():int{
+            $db = parent::database();
+            $db->connectionBD();
+                $sql = "INSERT INTO `classe` (`libelle`, `filiere`, `niveau`, `rp_id`) VALUES (?, ?, ?, ?)";
+                $result = $db->executeUpdate($sql, [$this->libelle, $this->filiere, $this->niveau, $_SESSION["KEY_USER_CONNECT"]->id]);
+            $db->closeConnection();
+            return $result;     
+        }
     }
 
 

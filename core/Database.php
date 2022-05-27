@@ -37,6 +37,6 @@
             $query = $this->pdo->prepare($sql);
             $query->execute($datas);
             // insert -> retourner le dernier Id inséré
-            return $query->rowCount(); 
+            return $query->rowCount() >= 1 ? $this->pdo->lastInsertId() : $query->rowCount(); 
         }
     }

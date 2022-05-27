@@ -12,7 +12,8 @@
         public function listerAnnee(){
             $annees = Annee::findAll();
             $datas = [
-                "annees" => $annees
+                "annees" => $annees,
+                "title" => "Liste des années"
             ];
             $this->render("annee/liste", $datas);
         }

@@ -1,13 +1,13 @@
 <div class="container jumbotron mt-5">
-    <p class="display-4 text-center mb-5"><?= $title ?></p>
-    <table class="table table-bordered table-striped">
+    <p class="display-4 text-center mb-5"><?= $title ?> <a href="add-professeurs" class="text-primary text-decoration-none">+</a></p>
+    <table class="table text-center">
         <thead> 
             <tr>
                 <th scope="col">#ID</th>
                 <th scope="col">Prénom(s)</th>
                 <th scope="col">Nom</th>
                 <th scope="col">Grade</th>
-                <th scope="col" colspan="2">Action</th>
+                <th scope="col" colspan="2">Actions</th>
             </tr>
         </thead>
         <tbody> 
@@ -19,8 +19,9 @@
                 <td><?= $prof->grade ?></td>
                 <td>
                     <!-- <div class="text-center"> -->
-                        <button class="btn btn-block btn-outline-warning">modifier</button>
-                        <button class="btn btn-block btn-outline-danger">supprimer</button>
+                        <a href="/details-prof/<?= $prof->id ?>" class="btn btn-block btn-outline-primary" >détails</a>
+                        <a href="/edit-prof/<?= $prof->id ?>" class="btn btn-block btn-outline-warning offset-1">modifier</a>
+                        <a href="/delete-prof/<?= $prof->id ?>" class="btn btn-block btn-outline-danger offset-1">supprimer</a>
                     <!-- </div> -->
                 </td>
             </tr>

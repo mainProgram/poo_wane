@@ -13,3 +13,10 @@ prepare ur questions
             call_user_func(array($ctrl, $action));
 
 professeur : qui l'a ajouté ?
+
+bloquer les acces a certaines pages
+
+packagist validation
+
+update the table demande to know which rp had validated gooooooood
+creer module, classes, annee

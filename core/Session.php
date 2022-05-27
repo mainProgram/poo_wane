@@ -10,6 +10,9 @@
                 session_start();
         }
 
+        public static function is_connect(){
+            return isset($_SESSION["KEY_USER_CONNECT"]);
+        }
 
         public function set(string $key, $data) //ajout de données dans la session
         {
@@ -31,5 +34,14 @@
         {
             $this->user = $user;
             return $this;
+        }
+
+        public function destroy($key){
+            unset($key);
+            session_destroy();
+        }
+
+        public static function can_see(array $arr){
+            return in_array($_SESSION["KEY_USER_CONNECT"]->role, $arr);
         }
     }

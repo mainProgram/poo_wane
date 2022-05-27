@@ -50,4 +50,13 @@ use App\Core\Model;
             $this->etat = $etat;
             return $this;
         }
+
+        public function insert():int{
+            $db = parent::database();
+            $db->connectionBD();
+                $sql = "INSERT INTO `module` (`nom`, `rp_id`) VALUES (?, ?)";
+                $result = $db->executeUpdate($sql, [$this->nom, $_SESSION["KEY_USER_CONNECT"]->id]);
+            $db->closeConnection();
+            return $result;     
+        }
     }

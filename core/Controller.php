@@ -13,6 +13,7 @@
         //Chargement des vues
         public function render(string $path, array $datas=[]){
             $datas["Constantes"] = Constantes::class;
+            $datas["Session"] = Session::class;
             $datas["request"] = $this->request;
             //dans une vue si on veut acccèder aux constantes on met $Constantes
             ob_start();

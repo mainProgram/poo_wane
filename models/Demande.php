@@ -4,8 +4,10 @@
 use App\Core\Model;
 
     class Demande extends Model{
-        private int $id;
+        private  $id;
         private string $motif;
+        private string $detail;
+        private string $traitement;
         private \DateTime $date; //le slash avant cest que quand on est dans php et quon mette \ ca veut dire quon attaque toutes les classes predefinies de php
         
         //many to one avec RP - plusieurs demandes traitees par 1 RP
@@ -14,8 +16,13 @@ use App\Core\Model;
         }
 
         //many to one avec Etudiant - plusieurs demandes formulees par 1 Etudiant
-        public function Etudiant():Etudiant{
-            return new Etudiant();
+        public function Etudiant():Etudiant|array{
+            $sql = "SELECT p.* 
+            FROM demande d, personne p
+            WHERE d.etudiant_id = p.id
+            AND p.role LIKE 'ROLE_ETUDIANT'
+            AND d.id = ? ";
+            return parent::findBy($sql, [$this->id]);
         }
 
         public function getId()
@@ -48,6 +55,46 @@ use App\Core\Model;
         public function setDate($date):self
         {
             $this->date = $date;
+            return $this;
+        }
+
+        public function insert():int{
+            $db = parent::database();
+            $db->connectionBD();
+                $sql = "INSERT INTO `demande` (`motif`, `detail`, `etudiant_id`) VALUES (?, ?, ?)";
+                $result = $db->executeUpdate($sql, [$this->motif, $this->detail, $_SESSION["KEY_USER_CONNECT"]->id]);
+            $db->closeConnection();
+            return $result;     
+        }
+
+        public function update():int{ 
+            $db = parent::database();
+            $db->connectionBD();
+                $sql = "UPDATE demande SET traitement = ?, rp_id = ? WHERE id=?";
+                $result = $db->executeUpdate($sql, [$this->traitement, $_SESSION["KEY_USER_CONNECT"]->id, $this->id]);
+            $db->closeConnection();
+            return $result;   
+        }
+
+        public function getDetail()
+        {
+            return $this->detail;
+        }
+
+        public function setDetail($detail):self
+        {
+            $this->detail = $detail;
+            return $this;
+        }
+
+        public function getTraitement()
+        {
+            return $this->traitement;
+        }
+
+        public function setTraitement($traitement):self
+        {
+            $this->traitement = $traitement;
             return $this;
         }
     }

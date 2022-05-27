@@ -7,7 +7,8 @@ use App\Model\RP;
         public function listerRP(){
             $rps = RP::findAll();
             $datas = [
-                "rps" => $rps
+                "rps" => $rps,
+                "title" => "Liste des responsables pédagogiques"
             ];
             $this->render("rp/liste", $datas);
         }

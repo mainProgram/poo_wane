@@ -1,28 +1,30 @@
-<div class="container-fluid mt-5">
-<div class="card  w-25 ">
-        <div class="card-body">
-            <h4 class="card-title"><?= $title?></h4>
-            <p class="card-text ml-3">
-                <form action="<?=$Constantes::WEB_ROOT."/index.php"?>" method="post" id="form">
-                    <div class="mb-3">
-                        <label for="nom" class="form-label">Nom</label>
-                        <input type="text" class="form-control" id="nom" name="nom">
-                    </div>
-                    <div class="mb-3">
-                        <label for="prenom" class="form-label">Prenom</label>
-                        <input type="text" class="form-control" id="prenom" name="prenom">
-                    </div>
-                    <div class="mb-3">
-                        <label for="login" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="login" name="login" aria-describedby="emailHelp">
-                    </div>
-                    <div class="mb-3">
-                        <label for="grade" class="form-label">Grade</label>
-                        <input type="text" class="form-control" id="grade" name="grade">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Enregistrer</button>
-                </form>
-            </p>
-        </div>
-    </div>
+<div class="container jumbotron mt-5 ">
+    <form action="add-classes" method="post" class=" row align-items-center justify-content-center">
+        <fieldset class="col-8">
+            <legend class="mt-4"><?=$title?><a href="classes" class="text-primary offset-5 text-decoration-none">Liste des classes</a></legend>
+            <div class="form-group mb-4 offset-1 row">
+                <fieldset class="col">
+                    <label for="libelle" class="col-form-label mt-3">Libellé de la classe</label>
+                    <input type="text" class="form-control" id="libelle" name="libelle">
+                </fieldset>
+            </div>
+            <div class="form-group mb-4 offset-1 row">
+                <fieldset class="col">
+                    <label for="filiere" class="col-form-label">Libellé de la filière</label>
+                    <input type="text" class="form-control" id="filiere" name="filiere">
+                </fieldset>
+            </div>
+            <div class="form-group mb-4 offset-1 row">
+                <fieldset class="col">
+                    <label for="niveau" class="col-form-label">Libellé du niveau</label>
+                    <input type="text" class="form-control" id="niveau" name="niveau">
+                </fieldset>
+            </div>
+            <div class="form-group mt-5 offset-1 row">
+                <div class="col-12">
+                    <button type="submit" class="btn btn-outline-primary w-100">Ajouter</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
 </div>

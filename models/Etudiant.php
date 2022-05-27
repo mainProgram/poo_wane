@@ -44,4 +44,22 @@
             return $this;
         }
        
+        public function insert():int{
+            $db = parent::database();
+            $db->connectionBD();
+                $sql = "INSERT INTO `personne` (`prenom`, `nom`, `sexe`, `role`, `login`, `password`, `adresse`) VALUES (?, ?, ?, ?, ?, ?)";
+                $result = $db->executeUpdate($sql, [$this->prenom, $this->nom, $this->sexe, parent::giveMeTheRole(), $this->login, "passer", $this->adresse]);
+            $db->closeConnection();
+            return $result;     
+        }
+
+        public function update():int{ 
+            $db = parent::database();
+            $db->connectionBD();
+                $sql = "UPDATE personne SET matricule = ? WHERE id=?";
+                $result = $db->executeUpdate($sql, [$this->matricule, $this->id]);
+            $db->closeConnection();
+            return $result;   
+        }
+
     }

@@ -1,4 +1,5 @@
-<div class="container-fluid mt-5">
+<div class="container jumbotron mt-5">
+<p class="display-4 text-center mb-5"><?= $title ?> <a href="inscription" class="text-primary text-decoration-none">+</a></p>
     <table class="table table bordered">
         <thead> 
             <tr>
@@ -8,7 +9,6 @@
                 <th scope="col">Nom</th>
                 <th scope="col">Login</th>
                 <th scope="col">Adresse</th>
-                <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody> 
@@ -20,9 +20,6 @@
                 <td><?= $etudiant->nom ?></td>
                 <td><?= $etudiant->login ?></td>
                 <td><?= $etudiant->adresse ?></td>
-                <td>
-                    <button class="btn btn-warning">modifier</button>
-                </td>
             </tr>
             <?php } ?>
         </tbody>

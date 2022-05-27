@@ -64,9 +64,9 @@
             //requete non préparée, var injectée lors de l'écriture de la requête
                 $table = self::getClass();
                 if($table == "User")
-                    $sql = "SELECT * FROM ".self::table()." WHERE role NOT LIKE 'ROLE_PROFESSEUR'".$orderBy;
+                    $sql = "SELECT * FROM ".self::table()." WHERE etat=1 AND role NOT LIKE 'ROLE_PROFESSEUR'".$orderBy;
                 else
-                    $sql = "SELECT * FROM ".self::table()." WHERE role LIKE '".self::giveMeTheRole()."'".$orderBy;
+                    $sql = "SELECT * FROM ".self::table()." WHERE etat=1 AND role LIKE '".self::giveMeTheRole()."'".$orderBy;
             $result = $db->executeSelect($sql);
             $db->closeConnection();
             return $result;        

@@ -5,9 +5,10 @@ use App\Model\User;
 
     class UserController extends Controller{
         public function listeruser(){
-            $users = User::findAll();
+            $users = User::findAll("role");
             $datas = [
-                "users" => $users
+                "users" => $users,
+                "title" => "Liste des utilisateurs"
             ];
             $this->render("user/liste", $datas);
         }

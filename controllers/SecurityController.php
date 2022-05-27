@@ -4,6 +4,7 @@
 use App\Core\Constantes;
 use App\Core\Controller;
     use App\Core\Request;
+    use App\Core\Session;
     use App\Model\User;
 
     class SecurityController extends Controller{
@@ -16,16 +17,28 @@ use App\Core\Controller;
             // 2- Traitement apres soumission = POST
             else{
                 extract($_POST);
-                if(User::findUserByLoginAndPassword($login, $password))
-                    $this->render("home/home");             
-                else
-                    // $this->render("security/login");
-                    header("Location:".Constantes::WEB_ROOT."login");
+                $user = User::findUserByLoginAndPassword($login, $password);
+                $session = new Session();
+                if($user){
+                    $session->set("KEY_USER_CONNECT", $user);
+                    $_SESSION["ANNEE_SCOLAIRE"] = 2;
+                    /* $this->render("home/home");  bakhoul deh*/   
+                    $this->redirectToRoute("home");
+                }
+                else{
+                    $session->set("error", "Login et/ou mot de passe incorrect(s) !");
+                    $this->redirectToRoute("login");
+                }
             }
         }
 
+        public function home(){
+            $this->render("home/home");
+        }
 
         public function deconnexion(){
+            $session = new Session();
+            $session->destroy("KEY_USER_CONNECT");
             $this->redirectToRoute("login");
         }
     }

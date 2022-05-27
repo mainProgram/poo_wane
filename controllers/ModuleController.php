@@ -7,12 +7,24 @@
         public function listerModule(){
             $modules = Module::findAll();
             $datas = [
-                "modules" => $modules
+                "modules" => $modules,
+                "title" => "Liste des modules"
             ];
             $this->render("module/liste", $datas);
         }
         
-        public function ajouterModule(){
-            
+        public function creerModule(){
+            if($this->request->isGet()){
+                $datas = [
+                    "title" => "Ajout de modules"
+                ];
+                $this->render("module/add", $datas);
+            }elseif($this->request->isPost()){
+                extract($_POST);
+                $module = new Module();
+                $module->setNom($nom);
+                $module->insert();
+                $this->redirectToRoute("modules");
+            }
         }
     }
